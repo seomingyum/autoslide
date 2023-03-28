@@ -126,3 +126,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'common.User'
 LOGIN_REDIRECT_URL = 'pybo:pybo'
 LOGOUT_REDIRECT_URL = 'common:main'
+
+'''이미지 자꾸 꺠져서 추가해준 세팅'''
+import os
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
