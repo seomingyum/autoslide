@@ -10,6 +10,12 @@
     height:100px;
 }
 
+#board_div {
+    text-align:center;
+    position:relative;
+    top:200px;
+}
+
 #id_div, #password_div{
     width:300px;
     margin:auto;
