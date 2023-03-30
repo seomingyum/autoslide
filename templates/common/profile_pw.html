@@ -44,7 +44,19 @@
     <br>
     <p id="footer_Copyright">Copyright ⓒ2023 And.&nbsp;All Rights Reserved.</p>
 </div>
-
 {% endblock %}
+// 자바스크립트 코드
+<script>
+const password = document.getElementById('new_password1');
+const confirm_password = document.getElementById('new_password2');
+const signupButton = document.getElementById('signup-button');
+
+signupButton.addEventListener('click', () => {
+  if (password.value !== confirm_password.value) {
+    alert("'비밀번호'와 '비밀번호 확인'이 다릅니다.");
+    return false;
+  }
+});
+</script>
 </body>
 </html>

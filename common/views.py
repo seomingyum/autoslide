@@ -5,6 +5,7 @@ from .forms import signupForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
+from .models import User
 from django.contrib import messages
 
 def main(request):
@@ -34,16 +35,18 @@ def signup(request):
     return render(request, 'common/signup.html', {'form': form})
 
 
-@login_required
+
 def profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('common:main')
+        else:
+            return redirect('common:profile')
     else:
         form = UserProfileForm(instance=request.user)
-    return render(request, 'common/profile.html', {'form': form})
+        return render(request, 'common/profile.html', {'form': form})
 
 
 def profile_pw(request):
@@ -55,6 +58,9 @@ def profile_pw(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'common/profile_pw.html', {'form': form})
+
+
+
 
 
 
