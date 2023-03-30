@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block content %}
+<div id ="logo_div" class="logo">
+    <a href="{% url 'common:main' %}">
+        <img id="logo_img" src="../../static/logo3.png" class="img-fluid">
+    </a>
+</div>
+<div style="width:500px; margin: 0px auto; text-align:center; position:relative; top:250px">
+    <form method="post">
+    {% csrf_token %}
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="username">아이디</span>
+            <input name="username" type="text" class="form-control" placeholder="{{ form.instance.username }}" aria-label="Username" aria-describedby="basic-addon1" required>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="phone">핸드폰</span>
+            <input name="phone" type="text" class="form-control" placeholder="{{ form.instance.phone }}" aria-label="Username" aria-describedby="basic-addon1" required>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="email">이메일</span>
+            <input name="email" type="text" class="form-control" placeholder="{{ form.instance.email }}" aria-label="Username" aria-describedby="basic-addon1" required>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="nickname">닉네임</span>
+            <input  name="nickname" type="text" class="form-control" placeholder="{{ form.instance.nickname }}" aria-label="Username" aria-describedby="basic-addon1" required>
+        </div>
+            <div id="login_div">
+                <button type="submit" class="btn btn-secondary btn-lg">변경하기</button>
+            </div>
+    </form>
+</div>
+
+<!-- 푸터 -->
+<div id="footer_div">
+    <hr>
+    <div id="footer_font">
+        <img src="/static/andlogo.jpg" alt="logoimage">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <B style = "font-size:16px">CONTACT US&nbsp;&nbsp;&nbsp;</B>
+        <i class="bi bi-telephone-fill"></i> 전화번호: 02-599-8697 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="bi bi-house-door-fill"></i> 관리자 이메일: autoslider@site.com
+    </div>
+    <br>
+    <p id="footer_Copyright">Copyright ⓒ2023 And.&nbsp;All Rights Reserved.</p>
+</div>
+{% endblock %}
+</body>
+</html>

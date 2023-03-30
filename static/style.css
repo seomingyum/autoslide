@@ -60,3 +60,9 @@
 #footer_Copyright {
     text-align:center;
 }
+
+#init_div {
+    text-align:center;
+    position:relative;
+    top:200px;
+}

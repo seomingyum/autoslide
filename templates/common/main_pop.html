@@ -6,6 +6,20 @@
     <body>
         {% extends 'base.html' %}
         {% block content %}
+
+<!-- 메뉴 버튼(회원정보 변경, 비밀번호 변경) -->
+        {% if user.is_authenticated %}
+        <div id="profile_div" class="dropdown" style="text-align:right; position:relative; right:50px; top:50px;">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            메뉴
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'common:profile' %}">회원정보 변경</a></li>
+                <li><a class="dropdown-item" href="{% url 'common:profile_pw' %}">비밀번호 변경</a></li>
+            </ul>
+        </div>
+        {% endif %}
+
 <!-- 로고 -->
         <div id ="logo_div" class="logo">
             <img id="logo_img" src="../../static/logo3.png" class="img-fluid">
@@ -17,11 +31,11 @@
             {% include "form_errors.html" %}
             <div id="id_div" class="input-group mb-3">
                 <span id="id_span" class="input-group-text">아이디</span>
-                <input type="text" name="username" class="form-control" placeholder="Username">
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
             </div>
             <div id="password_div" class="input-group mb-3">
                 <span class="input-group-text">비밀번호</span>
-                <input type="password"  name="password" class="form-control" placeholder="password">
+                <input type="password"  name="password" class="form-control" placeholder="password" required>
             </div>
             <div id="login_div">
                 <button id="login_button"type="submit" class="btn btn-secondary btn-lg">로그인</button>
@@ -38,17 +52,12 @@
         </div>
         {% endif %}
 
-<!-- 게시판 버튼 -->
+<!-- 시작하기 버튼 -->
         {% if user.is_authenticated %}
-        <div id="board_div" class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            메뉴
+        <div id="init_div">
+            <a href="{% url 'pybo:pybo' %}">
+                <button id="init_button" type="submit" class="btn btn-secondary btn-lg">시작하기</button>
             </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'pybo:pybo' %}">게시판</a></li>
-                <li><a class="dropdown-item" href="#">아무거나!</a></li>
-                <li><a class="dropdown-item" href="#">넣자!</a></li>
-            </ul>
         </div>
         {% endif %}
 
@@ -64,9 +73,7 @@
     <br>
     <p id="footer_Copyright">Copyright ⓒ2023 And.&nbsp;All Rights Reserved.</p>
         </div>
-
 <!-- JavaScript 코드 -->
-<!-- SweetAlert2 라이브러리를 불러옵니다. -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!-- 회원가입 완료 후 실행할 코드입니다. -->

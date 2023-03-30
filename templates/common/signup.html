@@ -24,7 +24,9 @@
          <div class="row d-flex justify-content-center align-items-center">
             <!-- 이미지에 대한 정보 -->
             <div class="col-md-4 text-center" >
-            <img src="../../static/logo2.png" >
+                <a href="{% url 'common:main' %}">
+                    <img src="../../static/logo2.png" >
+                </a>
             </div>
             <!-- 필수 정보 입력 줄 -->
                 <h4 class ="mb-3"></h4>
@@ -33,19 +35,19 @@
             <!-- 아이디에 대한 정보 --><h4 class ="mb-3"></h4>
             <div class="col-md-4" >
                 <label for="username" class="form-label">아이디</label>
-                <input type="text" class="form-control is-valid" name="username" id="username" placeholder="아이디 입력"  required="">
+                <input type="text" class="form-control is-valid" name="username" id="username" placeholder="아이디 입력"  required>
                 <div class="valid-feedback"></div>
             </div >
             <!-- 비밀번호에 대한 정보 --><h4 class ="mb-3"></h4>
                 <div class="col-md-4" >
                 <label for="password1" class="form-label">비밀번호</label>
-                <input type="password" class="form-control is-valid" name="password1" id="password1" placeholder="비밀번호 입력"  required="">
+                <input type="password" class="form-control is-valid" name="password1" id="password1" placeholder="비밀번호 입력"  required>
                 <div class="valid-feedback"></div>
             </div>
             <!-- 비밀번호 확인에 대한 정보 --><h4 class ="mb-3"></h4>
             <div class="col-md-4" >
             <label for="password2" class="form-label">비밀번호 확인</label>
-            <input type="password" class="form-control is-valid" name="password2" id="password2" placeholder="비밀번호 확인"  required="">
+            <input type="password" class="form-control is-valid" name="password2" id="password2" placeholder="비밀번호 확인"  required>
             <div class="valid-feedback"></div>
             </div>
             <!-- 이메일에 대한 정보 --><h4 class ="mb-3"></h4>
@@ -76,5 +78,18 @@
          </div>
          <!-- End Example Code -->
     </form>
+// 자바스크립트 코드
+<script>
+const password = document.getElementById('password1');
+const confirm_password = document.getElementById('password2');
+const signupButton = document.getElementById('signup-button');
+
+signupButton.addEventListener('click', () => {
+  if (password.value !== confirm_password.value) {
+    alert("'비밀번호'와 '비밀번호 확인'이 다릅니다.");
+    return false;
+  }
+});
+</script>
 </body>
 </html>

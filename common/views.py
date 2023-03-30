@@ -2,6 +2,10 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from .forms import signupForm
+from django.contrib.auth.decorators import login_required
+from .forms import UserProfileForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
 
 def main(request):
     return render(request, 'common/main.html')
@@ -28,6 +32,32 @@ def signup(request):
     else:
         form = signupForm()
     return render(request, 'common/signup.html', {'form': form})
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('common:main')
+    else:
+        form = UserProfileForm(instance=request.user)
+    return render(request, 'common/profile.html', {'form': form})
+
+
+def profile_pw(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('common:main')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'common/profile_pw.html', {'form': form})
+
+
+
 
 
 
