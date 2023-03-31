@@ -14,6 +14,9 @@ def main_pop(request):
 def board(request):
     return render(request, 'pybo/pybo.html')
 
+def produce(request):
+    return render(request, 'common/produce.html')
+
 def signup(request):
     if request.method == "POST":
         form = signupForm(request.POST)
@@ -31,8 +34,6 @@ def signup(request):
         form = signupForm()
     return render(request, 'common/signup.html', {'form': form})
 
-
-
 def profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user)
@@ -44,7 +45,6 @@ def profile(request):
     else:
         form = UserProfileForm(instance=request.user)
         return render(request, 'common/profile.html', {'form': form})
-
 
 def profile_pw(request):
     if request.method == 'POST':

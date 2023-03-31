@@ -13,4 +13,5 @@ urlpatterns = [
     path('main_pop/', views.main_pop, name='main_pop'),
     path('profile/', views.profile, name='profile'),
     path('profile_pw/', views.profile_pw, name='profile_pw'),
+    path('produce/',views.produce,name='produce'),
 ]
