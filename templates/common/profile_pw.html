@@ -21,11 +21,11 @@
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="new_password1">새 비밀번호</span>
-            <input name="new_password1" type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+            <input name="new_password1" type="password" class="form-control" aria-label="new_password1" aria-describedby="basic-addon1" required>
         </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="new_password2">새 비밀번호(확인)</span>
-            <input name="new_password2" type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+            <input name="new_password2" type="password" class="form-control" aria-label="new_password2" aria-describedby="basic-addon1" required>
         </div>
             <div id="login_div">
                 <button type="submit" class="btn btn-secondary btn-lg">변경하기</button>
@@ -49,11 +49,11 @@
 <script>
 const password = document.getElementById('new_password1');
 const confirm_password = document.getElementById('new_password2');
-const signupButton = document.getElementById('signup-button');
+const loginButton = document.querySelector('#login_div button');
 
-signupButton.addEventListener('click', () => {
+loginButton.addEventListener('click', () => {
   if (password.value !== confirm_password.value) {
-    alert("'비밀번호'와 '비밀번호 확인'이 다릅니다.");
+    alert("'새 비밀번호'와 '새 비밀번호(확인)'이 다릅니다.");
     return false;
   }
 });

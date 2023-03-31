@@ -2,11 +2,8 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from .forms import signupForm
-from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
-from .models import User
-from django.contrib import messages
 
 def main(request):
     return render(request, 'common/main.html')
@@ -54,7 +51,12 @@ def profile_pw(request):
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
+            new_password1 = form.cleaned_data.get('new_password1')
+            user = authenticate(password=new_password1)  # 사용자 인증
+            auth_login(request, user)  # 로그인
             return redirect('common:main')
+        else:
+            return redirect('common:profile_pw')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'common/profile_pw.html', {'form': form})
