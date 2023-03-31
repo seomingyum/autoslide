@@ -9,12 +9,16 @@
 {% block content %}
 <div id ="logo_div" class="logo">
     <a href="{% url 'common:main' %}">
-        <img id="logo_img" src="../../static/logo3.png" class="img-fluid">
+        <img id="logo_img" src="../../../static/logo3.png" class="img-fluid">
     </a>
 </div>
 <div style="width:500px; margin: 0px auto; position:relative; top:250px">
     <form method="post">
-    {% csrf_token %}
+        <div>
+        {% if new_password1 != new_password2 %}
+            <div class="text-bg-warning p-3">"새 비밀번호"와 "새 비밀번호(확인)"이 일치하지 않습니다.</div>
+        {% endif %}
+        </div>
         <div class="input-group mb-3">
             <span class="input-group-text" id="old_password">기존 비밀번호</span>
             <input name="old_password" type="password" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
@@ -44,6 +48,7 @@
     <br>
     <p id="footer_Copyright">Copyright ⓒ2023 And.&nbsp;All Rights Reserved.</p>
 </div>
+{{str}}
 {% endblock %}
 // 자바스크립트 코드
 <script>

@@ -3,6 +3,7 @@ from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from .forms import signupForm
 from .forms import UserProfileForm
+from  .models import User
 from django.contrib.auth.forms import PasswordChangeForm
 
 def main(request):
@@ -56,7 +57,10 @@ def profile_pw(request):
             auth_login(request, user)  # 로그인
             return redirect('common:main')
         else:
-            return redirect('common:profile_pw')
+            new_password1 = request.POST.get('new_password1')
+            new_password2 = request.POST.get('new_password2')
+            context = {'new_password1':new_password1, 'new_password2':new_password2}
+            return render(request, 'common/profile_pw.html', context)
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'common/profile_pw.html', {'form': form})

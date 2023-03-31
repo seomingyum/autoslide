@@ -13,8 +13,9 @@
             정보변경
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'common:profile' %}">회원정보 변경</a></li>
-                <li><a class="dropdown-item" href="{% url 'common:profile_pw' %}">비밀번호 변경</a></li>
+                <li><a class="dropdown-item" href="{% url 'common:profile' user_id=user.id %}">회원정보 변경</a></li>
+                <li><a class="dropdown-item" href="{% url 'common:profile_pw' user_id=user.id %}">비밀번호 변경</a></li>
+                <li><a class="dropdown-item" href="{% url 'common:logout' %}">{{ user.username }}님 로그아웃</a></li>
             </ul>
         </div>
         {% endif %}
