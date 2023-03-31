@@ -6,12 +6,11 @@
     <body>
         {% extends 'base.html' %}
         {% block content %}
-
-<!-- 메뉴 버튼(회원정보 변경, 비밀번호 변경) -->
+<!-- 정보변경 버튼(회원정보 변경, 비밀번호 변경) -->
         {% if user.is_authenticated %}
         <div id="profile_div" class="dropdown" style="text-align:right; position:relative; right:50px; top:50px;">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            메뉴
+            정보변경
             </a>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{% url 'common:profile' %}">회원정보 변경</a></li>
@@ -22,7 +21,7 @@
 
 <!-- 로고 -->
         <div id ="logo_div" class="logo">
-            <img id="logo_img" src="../../static/logo3.png" class="img-fluid">
+            <img id="logo_img" src="../static/logo3.png" class="img-fluid">
         </div>
 
 <!-- 아이디, 비밀번호 입력란, 로그인 버튼 -->
@@ -87,3 +86,6 @@
         {% endblock %}
 </body>
 </html>
+
+
+
